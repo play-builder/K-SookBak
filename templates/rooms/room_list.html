@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Home
+{% endblock page_title %}
+
+{% block content %}
+
+    <div class="container mx-auto pb-10">
+        <div class="rounded-xl bg-gray-800 h-50vh mt-32 mb-24 bg-cover bg-bottom -mx-40" style="background-image:url(https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"></div>
+        
+        <div class="flex flex-wrap -mx-40 mb-10">
+            {% for room in rooms %}
+                {% include 'mixins/room_card.html' with room=room %}
+            {% endfor %}
+        </div>
+
+        <div class="flex justify-center items-center mx-auto container">
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}" class="text-teal-400">
+                <i class="fas fa-arrow-left text-xl ml-2"></i>
+            </a>
+        {% endif %}
+
+            <span class="mr-4 ml-4 text-xl font-medium">{{page_obj.number}} / {{page_obj.paginator.num_pages}}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}" class="text-teal-400">
+                <i class="fas fa-arrow-right text-xl"></i>
+            </a>
+        {% endif %}
+        </div>
+    </div> 
+{% endblock content %}

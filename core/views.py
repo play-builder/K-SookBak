@@ -1,0 +1,1 @@
+# Views are handled in rooms/views.py

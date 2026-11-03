@@ -185,3 +185,8 @@ node_modules/
 
 my_settings.py
 *.sh
+
+# editor / OS
+*~
+.DS_Store
+.idea/
